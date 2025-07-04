@@ -102,6 +102,7 @@ SELECT
     ZORIGINATED AS originated,
     ZCALLTYPE AS call_type
 FROM ZCALLRECORD
+WHERE ZORIGINATED = 0
 ORDER BY ZDATE DESC
 LIMIT 1;
 """
@@ -117,20 +118,16 @@ while True:
         if result:
             time_from_last_call = time.time() - result[1] 
             timestamp = datetime.datetime.fromtimestamp(result[1])
-            print(f"  Date: {timestamp.strftime('%Y-%m-%d %H:%M:%S')}")
             print(f"  Last call: {time_from_last_call} from {result[0]}")
             if time_from_last_call <5:
-                os.system("pkill -i 'perplexity'")
+                os.system("pkill -i 'safari'")
                 os.system("pkill -i 'facetime'")
                 if is_email(result[0]):
                         with open('contact.txt', 'w') as file:
                             print(result[0], file=file)
                         if not contact_exists(result[0]):
                             create_contact(result[0], result[0])
-                        result = subprocess.run(["shortcuts", "run", "MailCall"], capture_output=True, text=True)
-                        time.sleep(5)
-                        subprocess.run(["say", "Hi! Who are you?"])                        
-
+                        result = subprocess.run(["shortcuts", "run", "MailCall"], capture_output=True, text=True)                       
                 else:
                         phone_number = phonenumbers.parse(result[0], None)
                         formatted_phone = phonenumbers.format_number(phone_number, phonenumbers.PhoneNumberFormat.INTERNATIONAL)
@@ -139,10 +136,22 @@ while True:
                         with open('contact.txt', 'w') as file:
                             print(formatted_phone, file=file)
                         result = subprocess.run(["shortcuts", "run", "NumberCall"], capture_output=True, text=True)
-                        time.sleep(5)
-                        subprocess.run(["say", "Hi! Who are you?"])
-                    
-                
+
+                subprocess.run(['open', '-a', 'Safari'])
+
+                applescript = '''
+                tell application "Safari"
+                    activate
+                    tell window 1
+                        set current tab to (make new tab with properties {URL:"https://www.perplexity.ai"})
+                        delay 2
+                        do JavaScript "document.querySelector('button[aria-label*=Voice]').click();" in current tab
+                    end tell
+                end tell
+                '''
+
+                subprocess.run(['osascript', '-e', applescript])                      
+                                  
         else:
             print("No FaceTime calls found.")
 
