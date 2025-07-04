@@ -2,9 +2,9 @@
 This is a script that can be used to initiate calls between two facetime accounts from mac to enable voice mode assistants on apple watch
 
 ##Usage:
-Create new user with a new iCloud address
-Install native perplexity app on your mac.
-Download the script to a folder. Create contact.txt file in the same folder.
+Create a new user with a new iCloud address.
+Make sure that you can access https://www.perplexity.ai and use voice mode.
+Download the script to a folder on your mac.
 Add this shortcuts to your mac:
 MailCall:
 https://www.icloud.com/shortcuts/e80c672219844431bbbd1c3fb55ff8ab
@@ -15,4 +15,4 @@ Point get file command in the shortcuts to contact.txt file.
 
 Start the script: python3 imp.py
 
-Call your mac using your the iCloud address of the new user you created. End the call immediately after connection. Your Mac should call back immediately. Take the call. In 10 seconds AI assistant will start speaking and you can start interacting with it. 
+Call your mac using your the iCloud address of the new user you created. End the call immediately after connection. Your Mac should call back immediately. Take the call. AI assistant will start speaking and you can start interacting with it. 
