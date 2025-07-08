@@ -1,18 +1,19 @@
 # AI Voice Mode On Apple Watch Over FaceTime
 This is a script that can be used to initiate calls between two facetime accounts from mac to enable voice mode assistants on apple watch
 
-##Usage:
+##Setup:
 Create a new user with a new iCloud address.
-Make sure that you can access https://www.perplexity.ai and use voice mode.
+Make sure that you can access https://www.perplexity.ai and use voice mode in Safari.
+Download LoopBack for mac and create new virtual devices:
+FaceTime: Pass-Thru -> Channels 1 & 2
+Safari: Safari -> Channels 1 & 2
+
+Select Safari device as your microphone for FaceTime application.
+Select Facetime as your output device instead of speakers.
+
 Download the script to a folder on your mac.
-Add this shortcuts to your mac:
-MailCall:
-https://www.icloud.com/shortcuts/e80c672219844431bbbd1c3fb55ff8ab
-NumberCall:
-https://www.icloud.com/shortcuts/35235f789ac94c46887f0c1792fc5345
-
-Point get file command in the shortcuts to contact.txt file.
-
 Start the script: python3 imp.py
+In Accessibility settings of your Mac enable "Full Keyboard Access"
 
-Call your mac using your the iCloud address of the new user you created. End the call immediately after connection. Your Mac should call back immediately. Take the call. AI assistant will start speaking and you can start interacting with it. 
+##Usage:
+Call your mac using your the iCloud address of the new user you created. Your mac should take the call and you can start interacting with your voice assistant.
