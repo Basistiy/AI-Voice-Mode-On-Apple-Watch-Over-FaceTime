@@ -17,3 +17,7 @@ In Accessibility settings of your Mac enable "Full Keyboard Access"
 
 ## Usage:
 Call your mac using your the iCloud address of the new user you created. Your mac should take the call and you can start interacting with your voice assistant.
+
+## Article:
+
+If you need more details on setup please read this article: https://medium.com/towards-artificial-intelligence/voice-mode-ai-assistant-on-apple-watch-through-facetime-b7d52494bcd2
